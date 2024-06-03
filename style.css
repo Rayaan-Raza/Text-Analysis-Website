@@ -1,0 +1,80 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    color: #fff;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Take the full height of the viewport */
+    flex-direction: column; /* Align items vertically */
+}
+
+.sun-icon {
+    width: 50px;
+    height: 50px;
+    background-color: #ffd700; /* Sun color */
+    border-radius: 50%;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999; /* Ensure it's on top of other elements */
+    cursor: pointer; /* Change cursor to pointer */
+    pointer-events: auto; /* Enable pointer events */
+    position: absolute; /* Set position to relative to position the tooltip */
+}
+
+.sun-icon::before {
+    content: "Switch to Light mode";
+    position: absolute;
+    top: 50px;
+    left: -300%;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.sun-icon:hover::before {
+    opacity: 1;
+    visibility: visible;
+}
+
+.sun-icon:active {
+    background-color: #808080; /* Change color to grey when active (clicked) */
+}
+
+.sun-icon input[type="checkbox"] {
+    display: none;
+}
+
+.sun-icon input[type="checkbox"]:checked ~ label img {
+    background-color: #808080; /* Change color to grey when checked */
+}
+
+textarea {
+    width: calc(100% - 40px); /* Adjusting for padding */
+    max-width: 600px; /* Set a maximum width */
+    height: 200px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+    background-color: rgb(255, 255, 255);
+    color: #000; /* Text color in textarea */
+}
+
+.result {
+    margin-top: auto; /* Push to bottom */
+    text-align: center; /* Center text */
+}
+
+h1 {
+    margin-top: 0; /* Remove default margin */
+}

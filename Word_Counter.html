@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Text Analysis Tool</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="sun-icon">
+  <input type="checkbox" id="sunCheckbox">
+  <label for="sunCheckbox">
+  </label>
+</div>
+
+<h1>Text Analysis Tool</h1>
+
+<textarea id="textInput" placeholder="Type or paste your text here..."></textarea>
+
+<p>Total words: <span id="wordCount">0</span></p>
+<p>Total characters: <span id="charCount">0</span></p>
+<p>Total sentences: <span id="sentenceCount">0</span></p>
+
+<script>
+  const textInput = document.getElementById('textInput');
+  const wordCountDisplay = document.getElementById('wordCount');
+  const charCountDisplay = document.getElementById('charCount');
+  const sentenceCountDisplay = document.getElementById('sentenceCount');
+
+  textInput.addEventListener('input', () => {
+    const text = textInput.value.trim();
+    
+    // Word Count
+    let wordCount = 0;
+    if (text !== '') {
+      const words = text.split(' ');
+      wordCount = words.filter(word => word !== '').length;
+    }
+
+    // Character Count
+    const charCount = text.length;
+
+    // Sentence Count
+    let sentenceCount = 0;
+    for (let i = 0; i < text.length; i++) {
+      if (text[i] === '.' || text[i] === '!' || text[i] === '?') {
+        sentenceCount++;
+      }
+    }
+
+    wordCountDisplay.textContent = wordCount;
+    charCountDisplay.textContent = charCount;
+    sentenceCountDisplay.textContent = sentenceCount;
+  });
+</script>
+
+</body>
+</html>
